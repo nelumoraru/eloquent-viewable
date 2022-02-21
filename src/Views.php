@@ -248,8 +248,8 @@ class Views implements ViewsContract
             'viewable_id' => $this->viewable->getKey(),
             'visitor' => $this->visitor->id(),
             'collection' => $this->collection,
-        ], [
             'viewable_type' => $this->viewable->getMorphClass(),
+        ], [
             'viewed_at' => Carbon::now(),
         ]);
     }
