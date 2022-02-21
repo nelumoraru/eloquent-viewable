@@ -244,11 +244,12 @@ class Views implements ViewsContract
     {
         $view = Container::getInstance()->make(ViewContract::class);
 
-        return $view->create([
+        return $view->updateOrCreate([
             'viewable_id' => $this->viewable->getKey(),
-            'viewable_type' => $this->viewable->getMorphClass(),
             'visitor' => $this->visitor->id(),
             'collection' => $this->collection,
+        ], [
+            'viewable_type' => $this->viewable->getMorphClass(),
             'viewed_at' => Carbon::now(),
         ]);
     }
